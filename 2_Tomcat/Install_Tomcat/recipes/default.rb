@@ -67,3 +67,25 @@ execute 'Set Tomcat permissions' do
   action :run
   not_if { ::File.exist?('/etc/systemd/system/tomcat.service') }
 end
+
+# resource for reloading the systemctl daemon
+# it does nothing until notified
+execute 'Systemctl Reload' do
+  command 'sudo systemctl daemon-reload'
+  action :nothing
+end
+
+# Load the service file up from a template
+template '/etc/systemd/system/tomcat.service' do
+  source 'tomcat.service.erb'
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+  notifies :run, 'execute[Systemctl Reload]', :immediately
+end
+
+# Enable and start the service
+  service 'tomcat.service' do
+  action [ :enable, :start ]
+end

@@ -33,3 +33,15 @@ describe directory('/opt/tomcat') do
   it { should exist }
   its('owner') { should eq 'tomcat' }
 end
+
+# Make sure the service is configured properly.
+describe service('tomcat') do
+  it { should be_installed }
+  it { should be_enabled }
+  it { should be_running }
+end
+
+# The real test... does it actually work?
+describe port(8080) do
+  it { should be_listening }
+end
