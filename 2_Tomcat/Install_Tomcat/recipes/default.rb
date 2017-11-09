@@ -35,3 +35,12 @@ remote_file '/tmp/apache-tomcat-8.5.23.tar.gz' do
   mode '0755'
   action :create
 end
+
+# Create the directory for tomcat
+# More info here: https://docs.chef.io/resource_directory.html
+directory '/opt/tomcat' do
+  owner 'tomcat'
+  group 'tomcat'
+  mode '0755'
+  action :create
+end

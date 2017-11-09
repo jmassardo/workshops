@@ -27,3 +27,8 @@ end
 describe file('/tmp/apache-tomcat-8.5.23.tar.gz') do
   it { should exist }
 end
+
+# Does the /opt/tomcat directory exist?
+describe directory('/opt/tomcat') do
+  it { should exist }
+end
