@@ -21,3 +21,4 @@ bin/*
 Berksfile.lock
 .zero-knife.rb
 Policyfile.lock.json
+1_MongoDB/Install_MongoDB/.kitchen.yml
