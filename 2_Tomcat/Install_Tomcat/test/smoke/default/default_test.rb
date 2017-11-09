@@ -22,3 +22,8 @@ describe user('tomcat') do
   its('home') { should eq '/opt/tomcat' }
   its('shell') { should eq '/bin/nologin' }
 end
+
+# Did it download the install tarball?
+describe file('/tmp/apache-tomcat-8.5.23.tar.gz') do
+  it { should exist }
+end
