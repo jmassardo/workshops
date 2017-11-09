@@ -23,6 +23,6 @@ describe service('mongod') do
 end
 
 # Test to see if we can successfully run the mongo executable from the command line
-describe command('mongo --eval "printjson(db.serverStatus())" | grep 'MongoDB server'') do
-  its('stdout') { should eq '/MongoDB/' }
+describe command('mongo --eval "quit()" | grep server') do
+  its('stdout') { should eq "MongoDB server version: 3.4.10\n" }
 end
