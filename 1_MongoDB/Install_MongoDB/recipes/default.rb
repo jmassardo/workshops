@@ -4,8 +4,8 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
-#Create yum repo file so it knows how to find the mongodb packages
-
+# Create yum repo folder if it doesn't exist
+# More info here: https://docs.chef.io/resource_directory.html
 directory '/etc/yum.repos.d/' do
   owner 'root'
   group 'root'
@@ -13,6 +13,8 @@ directory '/etc/yum.repos.d/' do
   action :create
 end
 
+# Populate the file from a template. Using a template keeps the recipe cleaner
+# More info here: https://docs.chef.io/resource_template.html
 template '/etc/yum.repos.d/mongodb-org-3.4.repo' do
   source 'mongo_repo.erb'
   owner 'root'
