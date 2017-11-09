@@ -9,3 +9,15 @@
 describe file('/etc/yum.repos.d/mongodb-org-3.4.repo') do
   it { should exist }
 end
+
+# Make sure that mongo is installed
+describe package('mongodb-org') do
+    it { should be_installed }
+end
+
+# Make sure service is configured correctly
+describe service('mongod') do
+    it { should be_installed }
+    it { should be_enabled }
+    it { should be_running }
+end
