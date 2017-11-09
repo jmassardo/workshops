@@ -70,12 +70,14 @@ end
 
 # resource for reloading the systemctl daemon
 # it does nothing until notified
+# More info here: https://docs.chef.io/resource_execute.html
 execute 'Systemctl Reload' do
   command 'sudo systemctl daemon-reload'
   action :nothing
 end
 
 # Load the service file up from a template
+# More info here: https://docs.chef.io/resource_template.html
 template '/etc/systemd/system/tomcat.service' do
   source 'tomcat.service.erb'
   owner 'root'
@@ -86,6 +88,7 @@ template '/etc/systemd/system/tomcat.service' do
 end
 
 # Enable and start the service
+# More info here: https://docs.chef.io/resource_service.html
   service 'tomcat.service' do
   action [ :enable, :start ]
 end
