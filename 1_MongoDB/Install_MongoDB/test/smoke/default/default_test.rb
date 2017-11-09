@@ -7,10 +7,16 @@
 
 # Some tests are different between centos and ubuntu so this separates those items
 if os.debian?
-  #TODO
+  # Make sure the key got imported
   describe command('apt-key list') do
     its('stdout') { should match (/MongoDB/) }
   end
+  
+  # Make sure the source file exists
+  describe file('/etc/apt/sources.list.d/mongodb-org-3.4.list') do
+    it { should exist }
+  end
+  
 elsif os.redhat?
   # Make sure the mongodb repo file gets created
   describe file('/etc/yum.repos.d/mongodb-org-3.4.repo') do
