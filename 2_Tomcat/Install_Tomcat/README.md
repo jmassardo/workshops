@@ -20,7 +20,7 @@ This cookbook makes use of the following Chef Resources:
 
 This cookbook was tested using [Test Kitchen](http://kitchen.ci/), [VirtualBox](https://www.virtualbox.org/), and [Vagrant](https://www.vagrantup.com/).
 
-You can find more information on this testing method by reviewing Kitchen's (Getting Started Guide)[http://kitchen.ci/docs/getting-started] or by completing Chef's (Local Development and Testing)[https://learn.chef.io/tracks/local-development-and-testing#/] module.
+You can find more information on this testing method by reviewing Kitchen's [Getting Started Guide](http://kitchen.ci/docs/getting-started) or by completing Chef's [Local Development and Testing](https://learn.chef.io/tracks/local-development-and-testing#/) module.
 
 ## Usage
 
