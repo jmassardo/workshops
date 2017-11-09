@@ -1,11 +1,6 @@
 ---
 driver:
-  name: azurerm
-
-driver_config:
-  subscription_id: '2910ad59-441f-4a02-986a-4f13222e58f7'
-  location: 'South Central US'
-  machine_size: 'Standard_DS1_v2'
+  name: vagrant
 
 provisioner:
   name: chef_zero
@@ -18,7 +13,7 @@ verifier:
   name: inspec
 
 platforms:
-  - name: centos-7
+  - name: centos-7.4
 
 suites:
   - name: mongo
@@ -27,4 +22,4 @@ suites:
     verifier:
       inspec_tests:
         - test/smoke/default
-    attributes:
+    attributes: 

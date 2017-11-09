@@ -22,3 +22,10 @@ template '/etc/yum.repos.d/mongodb-org-3.4.repo' do
   mode '0755'
   action :create
 end
+
+# Install MongoDB
+# More info here: https://docs.chef.io/resource_package.html
+package 'Install MongoDB' do
+  package_name 'mongodb-org'
+  action :install
+end

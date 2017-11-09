@@ -11,6 +11,8 @@ Gemfile.lock
 gems.locked
 bin/*
 .bundle/*
+Gemfile.old
+Gemfile.lock.old
 
 # test kitchen
 .kitchen/
@@ -21,4 +23,3 @@ bin/*
 Berksfile.lock
 .zero-knife.rb
 Policyfile.lock.json
-1_MongoDB/Install_MongoDB/.kitchen.yml
