@@ -44,3 +44,12 @@ directory '/opt/tomcat' do
   mode '0755'
   action :create
 end
+
+# Unpack tarball with a guard to only unpack it only if the service file doesn't exist
+# This will keep the resource from breaking the install if run multiple times
+# More info here: https://docs.chef.io/resource_execute.html
+execute 'Unpack Tomcat' do
+  command 'sudo tar xvf /tmp/apache-tomcat-8.5.23.tar.gz -C /opt/tomcat --strip-components=1'
+  action :run
+  not_if { ::File.exist?('/etc/systemd/system/tomcat.service') }
+end
