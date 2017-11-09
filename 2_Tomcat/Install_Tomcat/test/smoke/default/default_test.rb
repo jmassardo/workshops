@@ -31,4 +31,5 @@ end
 # Does the /opt/tomcat directory exist?
 describe directory('/opt/tomcat') do
   it { should exist }
+  its('owner') { should eq 'tomcat' }
 end

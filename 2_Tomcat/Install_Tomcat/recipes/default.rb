@@ -53,3 +53,17 @@ execute 'Unpack Tomcat' do
   action :run
   not_if { ::File.exist?('/etc/systemd/system/tomcat.service') }
 end
+
+# Set the recursive permissions
+# More info here: https://docs.chef.io/resource_execute.html
+execute 'Set Tomcat permissions' do
+  command <<-EOF
+    sudo chgrp -R tomcat /opt/tomcat
+    cd /opt/tomcat
+    sudo chmod -R g+r conf
+    sudo chmod g+x conf
+    sudo chown -R tomcat webapps/ work/ temp/ logs/
+  EOF
+  action :run
+  not_if { ::File.exist?('/etc/systemd/system/tomcat.service') }
+end
