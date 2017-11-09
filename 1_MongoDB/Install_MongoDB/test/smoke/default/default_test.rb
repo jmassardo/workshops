@@ -21,3 +21,8 @@ describe service('mongod') do
     it { should be_enabled }
     it { should be_running }
 end
+
+# Test to see if we can successfully run the mongo executable from the command line
+describe command('mongo --eval "printjson(db.serverStatus())" | grep 'MongoDB server'') do
+  its('stdout') { should eq '/MongoDB/' }
+end
