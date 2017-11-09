@@ -21,7 +21,7 @@ platforms:
   - name: centos-7
 
 suites:
-  - name: default
+  - name: mongo
     run_list:
       - recipe[Install_MongoDB::default]
     verifier:
