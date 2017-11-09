@@ -29,3 +29,9 @@ package 'Install MongoDB' do
   package_name 'mongodb-org'
   action :install
 end
+
+# Make sure the service is started and configured to run on a system restart
+# More info here: https://docs.chef.io/resource_service.html
+service 'mongod' do
+  action [ :enable, :start ]
+end
