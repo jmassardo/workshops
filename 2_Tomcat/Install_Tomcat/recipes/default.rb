@@ -7,6 +7,12 @@
 # Install Java
 # More info here: https://docs.chef.io/resource_package.html
 package 'Install Java 1.7' do
-    package_name 'java-1.7.0-openjdk-devel'
-    action :install
-  end
+  package_name 'java-1.7.0-openjdk-devel'
+  action :install
+end
+
+# Create tomcat group
+# More info here: https://docs.chef.io/resource_group.html
+group 'tomcat' do
+  action :create
+end
