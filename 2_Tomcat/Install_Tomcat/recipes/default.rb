@@ -89,6 +89,6 @@ end
 
 # Enable and start the service
 # More info here: https://docs.chef.io/resource_service.html
-  service 'tomcat.service' do
+service 'tomcat.service' do
   action [ :enable, :start ]
 end
