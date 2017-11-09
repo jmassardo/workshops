@@ -5,10 +5,22 @@
 # The Inspec reference, with examples and extensive documentation, can be
 # found at http://inspec.io/docs/reference/resources/
 
-# Make sure the mongodb repo file gets created
-describe file('/etc/yum.repos.d/mongodb-org-3.4.repo') do
-  it { should exist }
+# Some tests are different between centos and ubuntu so this separates those items
+if os.debian?
+  #TODO
+  describe command('apt-key list') do
+    its('stdout') { should match (/MongoDB/) }
+  end
+elsif os.redhat?
+  # Make sure the mongodb repo file gets created
+  describe file('/etc/yum.repos.d/mongodb-org-3.4.repo') do
+    it { should exist }
+  end
 end
+
+#
+# These are common tests
+#
 
 # Make sure that mongo is installed
 describe package('mongodb-org') do
