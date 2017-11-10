@@ -5,17 +5,14 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
 # Update the apt database
-execute 'apt-get update' do
-  case node["platform"]
-    when "centos"
-      command 'echo "skip"'
-    when "ubuntu"
-      command 'sudo apt-get update'
-    end
-  action :run
-  # Add guard to prevent continual execution
-end
 
+if platform?("ubuntu")
+  execute 'apt-get update' do
+    command 'sudo apt-get update'
+    action :run
+    # Add guard to prevent continual execution
+  end
+end
 
 # Install Java
 # More info here: https://docs.chef.io/resource_package.html
@@ -97,7 +94,12 @@ package 'Install Java 1.7' do
   # Load the service file up from a template
   # More info here: https://docs.chef.io/resource_template.html
   template '/etc/systemd/system/tomcat.service' do
-    source 'tomcat.service.erb'
+    case node["platform"]
+    when "centos"
+      source 'tomcat.service.erb'
+    when "ubuntu"
+      source 'tomcat.service.ubuntu.erb'
+    end
     owner 'root'
     group 'root'
     mode '0755'
