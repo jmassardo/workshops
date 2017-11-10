@@ -1,0 +1,3 @@
+use AARdb;
+CREATE USER 'aarapp'@'localhost' IDENTIFIED BY '<%= @appdbpw %>';
+GRANT CREATE,INSERT,DELETE,UPDATE,SELECT on AARdb.* to aarapp@localhost;

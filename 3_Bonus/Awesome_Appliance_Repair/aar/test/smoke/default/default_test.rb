@@ -68,3 +68,6 @@ end
 
 # TODO
 # Does the app load properly?
+describe command('curl localhost | grep Awesome') do
+  its('stdout') { should match /Awesome/ }
+end
