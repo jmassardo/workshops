@@ -23,3 +23,5 @@ Gemfile.lock.old
 Berksfile.lock
 .zero-knife.rb
 Policyfile.lock.json
+
+.DS_Store
