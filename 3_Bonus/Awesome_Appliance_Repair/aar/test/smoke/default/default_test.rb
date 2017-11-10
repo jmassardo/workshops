@@ -5,14 +5,16 @@
 # The Inspec reference, with examples and extensive documentation, can be
 # found at http://inspec.io/docs/reference/resources/
 
-unless os.windows?
-  # This is an example test, replace with your own test.
-  describe user('root'), :skip do
-    it { should exist }
-  end
-end
-
-# This is an example test, replace it with your own test.
-describe port(80), :skip do
-  it { should_not be_listening }
-end
+# Is apache2 installed?
+# Is mysql installed?
+# Is unzip installed?
+# Did the remote file get downloaded?
+# Did the install get unpacked to the proper path?
+# Are the permissions correct on the install directory?
+# Does the apache conf file exist?
+# -> and does it have the correct content?
+# Does the AAR_config file exist?
+# -> and does it have the correct content?
+# Is mysql running?
+# Is apache running?
+# Does the app load properly?
