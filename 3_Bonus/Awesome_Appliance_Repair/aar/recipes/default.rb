@@ -15,11 +15,6 @@ mysql_root_password = 'P@ssw0rd'
 appdbpw = 'P@ssw0rd'
 secretkey = 'P@ssw0rd'
 
-# Install apache2
-package 'apache2' do
-  action :install
-end
-
 # Workaround to set mysql root password
 # This should be replaced with a vault type solution to protect
 # this secret
@@ -39,6 +34,10 @@ package 'mysql-server' do
   action :install
 end
 
+# Install apache2
+package 'apache2' do
+    action :install
+  end
 
 # Install unzip
 package 'unzip' do
@@ -92,11 +91,11 @@ end
 
 # The unzip actually makes the directory but we still need to set proper ownership
 directory '/var/www/AAR' do
-    owner 'www-data'
-    group 'www-data'
-    mode '0755'
-    action :create
-  end
+  owner 'www-data'
+  group 'www-data'
+  mode '0755'
+  action :create
+end
 
 # Create the AAR_config file
 file '/var/www/AAR/AAR_config.py' do
@@ -109,8 +108,8 @@ end
 # Populate the AAR_Config file
 template '/var/www/AAR/AAR_config.py' do
   variables(
-      'appdbpw': appdbpw,
-      'secretkey': secretkey
+    'appdbpw': appdbpw,
+    'secretkey': secretkey
   )
   source 'aar_config.erb'
   action :create
@@ -138,7 +137,7 @@ end
 # Populate the AAR_Config file
 template '/tmp/Awesome-Appliance-Repair-master/grant_perms.sql' do
   variables(
-      'appdbpw': appdbpw
+    'appdbpw': appdbpw
   )
   source 'sql_script.erb'
   action :create
@@ -166,6 +165,7 @@ service 'apache2' do
   action [ :enable, :start ]
 end
 
+# Resource to restart Apache after the new config is set up
 execute 'Restart Apache' do
   command 'apachectl graceful'
   action :nothing

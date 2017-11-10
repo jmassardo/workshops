@@ -36,16 +36,10 @@ describe file('/etc/apache2/sites-enabled/AAR-apache.conf') do
   it { should exist }
 end
 
-# TODO
-# -> and does it have the correct content?
-
 # Does the AAR_config file exist?
 describe file('/var/www/AAR/AAR_config.py') do
   it { should exist}
 end
-
-# TODO
-# -> and does it have the correct content?
 
 # Is mysql running?
 describe service('mysql') do
@@ -66,7 +60,6 @@ describe port(80) do
   it { should be_listening }
 end
 
-# TODO
 # Does the app load properly?
 describe command('curl localhost | grep Awesome') do
   its('stdout') { should match /Awesome/ }
