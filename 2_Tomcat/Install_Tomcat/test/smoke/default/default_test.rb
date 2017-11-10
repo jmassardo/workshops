@@ -4,15 +4,16 @@
 
 # The Inspec reference, with examples and extensive documentation, can be
 # found at http://inspec.io/docs/reference/resources/
-if os.debian?
-
-elsif os.redhat?
-
-end
 
 # Is Java installed?
-describe package('java-1.7.0-openjdk-devel') do
-  it { should be_installed }
+if os.debian?
+  describe package('default-jdk') do
+    it { should be_installed }
+  end
+elsif os.redhat?
+  describe package('java-1.7.0-openjdk-devel') do
+    it { should be_installed }
+  end
 end
 
 # Does the tomcat group exist?

@@ -4,12 +4,29 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
+# Update the apt database
+execute 'apt-get update' do
+  case node["platform"]
+    when "centos"
+      command 'echo "skip"'
+    when "ubuntu"
+      command 'sudo apt-get update'
+    end
+  action :run
+  # Add guard to prevent continual execution
+end
+
 
 # Install Java
 # More info here: https://docs.chef.io/resource_package.html
 package 'Install Java 1.7' do
-    package_name 'java-1.7.0-openjdk-devel'
-    action :install
+  case node["platform"]
+    when "centos"
+      package_name 'java-1.7.0-openjdk-devel'
+    when "ubuntu"
+      package_name 'default-jdk'
+    end
+  action :install
   end
   
   # Create tomcat group
