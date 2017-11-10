@@ -11,7 +11,7 @@ describe package('apache2') do
 end
 
 # Is mysql installed?
-describe package('mysql') do
+describe package('mysql-server') do
   it { should be_installed }
 end
 
