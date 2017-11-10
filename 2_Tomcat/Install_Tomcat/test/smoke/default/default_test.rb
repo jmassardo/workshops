@@ -4,6 +4,11 @@
 
 # The Inspec reference, with examples and extensive documentation, can be
 # found at http://inspec.io/docs/reference/resources/
+if os.debian?
+
+elsif os.redhat?
+
+end
 
 # Is Java installed?
 describe package('java-1.7.0-openjdk-devel') do
