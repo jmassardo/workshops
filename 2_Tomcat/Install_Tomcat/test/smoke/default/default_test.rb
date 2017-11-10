@@ -16,32 +16,14 @@ elsif os.redhat?
   end
 end
 
-# Does the tomcat group exist?
-describe group('tomcat') do
-  it { should exist }
-end
-
-# Does the tomcat user exist with the correct properties?
-describe user('tomcat') do
-  it { should exist }
-  its('group') { should eq 'tomcat' }
-  its('home') { should eq '/opt/tomcat' }
-  its('shell') { should eq '/bin/nologin' }
-end
-
-# Did it download the install tarball?
-describe file('/tmp/apache-tomcat-8.5.23.tar.gz') do
-  it { should exist }
-end
-
 # Does the /opt/tomcat directory exist?
-describe directory('/opt/tomcat') do
+describe directory('/opt/tomcat_helloworld') do
   it { should exist }
-  its('owner') { should eq 'tomcat' }
+  its('owner') { should eq 'tomcat_helloworld' }
 end
 
 # Make sure the service is configured properly.
-describe service('tomcat') do
+describe service('tomcat_helloworld') do
   it { should be_installed }
   it { should be_enabled }
   it { should be_running }
