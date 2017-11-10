@@ -7,14 +7,14 @@
 
 # Make sure that mongo is installed
 describe package('mongodb-org') do
-    it { should be_installed }
+  it { should be_installed }
 end
 
 # Make sure service is configured correctly
 describe service('mongod') do
-    it { should be_installed }
-    it { should be_enabled }
-    it { should be_running }
+  it { should be_installed }
+  it { should be_enabled }
+  it { should be_running }
 end
 
 # Test to see if we can successfully run the mongo executable from the command line
