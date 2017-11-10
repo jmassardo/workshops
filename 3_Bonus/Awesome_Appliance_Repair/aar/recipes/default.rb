@@ -4,6 +4,10 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
+#
+# Pre-req packages
+#
+
 # Install apache2
 package 'apache2' do
   action :install
@@ -16,6 +20,25 @@ end
 
 # Install unzip
 package 'unzip' do
+  action :install
+end
+
+#
+# App specific packages
+#
+
+# Install module for Apache
+package 'libapache2-mod-wsgi' do
+  action :install
+end
+
+# Install Pip
+package 'python-pip' do
+  action :install
+end
+
+# Install mysql module for Python
+package 'python-mysqldb' do
   action :install
 end
 
@@ -63,4 +86,9 @@ end
 # Enable and start apache
 service 'apache2' do
   action [ :enable, :start ]
+end
+
+execute 'Restart Apache' do
+  command 'apachectl graceful'
+  action :nothing
 end
