@@ -69,6 +69,11 @@ file '/etc/apache2/sites-enabled/AAR-apache.conf' do
 end
 
 # Populate the apache config file
+template '/etc/apache2/sites-enabled/AAR-apache.conf' do
+  source 'apache_conf.erb'
+  action :create
+end
+
 # Create the AAR_config file
 file '/var/www/AAR/AAR_config.py' do
   owner 'www-data'
@@ -78,6 +83,10 @@ file '/var/www/AAR/AAR_config.py' do
 end
 
 # Populate the AAR_Config file
+template '/var/www/AAR/AAR_config.py' do
+    source 'aar_config.erb'
+    action :create
+  end
 # Create SQL config
 # Enable and start mysql
 service 'mysql' do
