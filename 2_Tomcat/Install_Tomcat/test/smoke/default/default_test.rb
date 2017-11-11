@@ -18,9 +18,9 @@ end
 # Does the tomcat user exist with the correct properties?
 describe user('tomcat') do
   it { should exist }
-  its('group') { should eq 'tomcat' }
-  its('home') { should eq '/opt/tomcat' }
-  its('shell') { should eq '/bin/nologin' }
+  its ('group') { should eq 'tomcat' }
+  its ('home') { should eq '/opt/tomcat' }
+  its ('shell') { should eq '/bin/nologin' }
 end
 
 # Did it download the install tarball?
