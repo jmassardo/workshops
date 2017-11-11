@@ -52,3 +52,39 @@ ruby 'Install Ruby' do
   EOH
   not_if { ::File.exist?('/usr/local/bin/ruby') }
 end
+
+# Run commands to config apache
+ruby 'config apache' do
+  interpreter 'bash'
+  code <<-EOH
+    a2enmod proxy_http
+    a2enmod rewrite
+  EOH
+  not_if { ::File.exist?('/etc/apache2/sites-enabled/blog.conf') }
+end
+
+# Remove default apache conf
+file '/etc/apache2/sites-enabled/000-default.conf' do
+  action :delete
+end
+
+# Create apache site file
+file '/etc/apache2/sites-enabled/blog.conf' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
+# Populate site file
+template '/etc/apache2/sites-enabled/blog.conf' do
+  source 'apache_conf.erb'
+  action :create
+  notifies :run, 'execute[Restart Apache]', :immediately
+end
+
+# Apache restart. only used when the site file template converges
+execute 'Restart Apache' do
+  command 'service apache2 restart'
+  action :nothing
+end
