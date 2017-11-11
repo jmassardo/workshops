@@ -91,6 +91,11 @@ execute 'Restart Apache' do
   action :nothing
 end
 
+# Enable and start apache
+service 'apache2' do
+  action [ :enable, :start ]
+end
+
 # Clone the app and install the bits for it
 script 'App install script' do
   interpreter 'bash'
