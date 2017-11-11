@@ -5,6 +5,7 @@ This cookbook installs and tests a base install of MongoDB.
 ## Cookbook Info
 
 This cookbook makes use of the following Chef Resources:
+
 * [Directory](https://docs.chef.io/resource_directory.html)
 * [Template](https://docs.chef.io/resource_template.html)
 * [Package](https://docs.chef.io/resource_package.html)
@@ -19,15 +20,16 @@ You can find more information on this testing method by reviewing Kitchen's [Get
 ## Usage
 
 Steps to test this cookbook:
+
 * Clone this repo:
-    ```
+    ``` bash
     git clone https://github.com/jmassardo/workshops.git
     ```
 * Change directories to the cookbook directory:
-    ```
+    ``` bash
     cd ~/workshops/1_MongoDB/Install_MongoDB
     ```
 * Run with Test Kitchen
-    ```
+    ``` bash
     kitchen test
     ```
