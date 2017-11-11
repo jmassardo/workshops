@@ -5,10 +5,10 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
 # update packages
-execute 'apt-get update' do
-  command 'sudo apt-get update'
-  action :run
-end
+# execute 'apt-get update' do
+#   command 'sudo apt-get update'
+#   action :run
+# end
 
 # Install packages
 %w(
@@ -99,6 +99,7 @@ ruby 'App install script' do
   sudo gem install bundler
   bundle install
   sudo thin install
+  /usr/sbin/update-rc.d -f thin defaults
   EOH
   not_if { ::File.exist?('/etc/thin/blog.conf') }
 end
@@ -113,7 +114,7 @@ end
 
 # Populate conf file
 template '/etc/thin/blog.conf' do
-  source 'apache_conf.erb'
+  source 'thin_blog_yml.erb'
   action :create
 end
 
@@ -127,13 +128,13 @@ end
 
 # Populate thin init file
 template '/etc/init.d/thin' do
-  source 'apache_conf.erb'
+  source 'thin_init.erb'
   action :create
   notifies :run, 'execute[Restart Thin]', :immediately
 end
 
 # Thin restart. only used when the site file template converges
 execute 'Restart Thin' do
-  command 'service thin restart'
+  command 'sudo systemctl daemon-reload && sudo service thin restart'
   action :nothing
 end

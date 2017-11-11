@@ -65,3 +65,8 @@ end
 describe port(80) do
   it { should be_listening }
 end
+
+# Does the app load properly?
+describe command ('curl localhost | grep Ada') do
+  its ('stdout') { should match /Ada/ }
+end
