@@ -23,11 +23,13 @@ Steps to test this cookbook:
 
 * Clone this repo:
     ``` bash
-    git clone https://github.com/jmassardo/workshops.git
+    mkdir community_cookbook
+    cd community_cookbook
+    git clone -b community_cookbook https://github.com/jmassardo/workshops.git
     ```
 * Change directories to the cookbook directory:
     ``` bash
-    cd ~/workshops/1_MongoDB/Install_MongoDB
+    cd workshops/1_MongoDB/Install_MongoDB
     ```
 * Run with Test Kitchen
     ``` bash
