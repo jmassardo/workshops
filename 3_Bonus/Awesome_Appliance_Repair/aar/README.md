@@ -29,11 +29,13 @@ Steps to test this cookbook:
 
 * Clone this repo:
     ``` bash
+    mkdir aar
+    cd aar
     git clone https://github.com/jmassardo/workshops.git
     ```
 * Change directories to the cookbook directory:
     ``` bash
-    cd ~/workshops/3_Bonus/Awesome_Appliance_Repair/aar
+    cd workshops/3_Bonus/Awesome_Appliance_Repair/aar
     ```
 * Run with Test Kitchen
     ``` bash
