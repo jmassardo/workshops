@@ -31,7 +31,7 @@ Steps to test this cookbook:
     ``` bash
     mkdir aar
     cd aar
-    git clone https://github.com/jmassardo/workshops.git
+    git clone -b aar_v1 https://github.com/jmassardo/workshops.git
     ```
 * Change directories to the cookbook directory:
     ``` bash
