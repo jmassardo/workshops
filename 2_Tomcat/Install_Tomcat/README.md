@@ -29,7 +29,9 @@ Steps to test this cookbook:
 
 * Clone this repo:
     ``` bash
-    git clone https://github.com/jmassardo/workshops.git
+    mkdir ubuntu_support
+    cd ubuntu_support
+    git clone -b ubuntu_support https://github.com/jmassardo/workshops.git
     ```
 * Change directories to the cookbook directory:
     ``` bash
