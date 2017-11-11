@@ -13,12 +13,13 @@ verifier:
   name: inspec
 
 platforms:
+  - name: centos-7.4
   - name: ubuntu-16.04
 
 suites:
-  - name: aar
+  - name: tomcat
     run_list:
-      - recipe[aar::default]
+      - recipe[Install_Tomcat::default]
     verifier:
       inspec_tests:
         - test/smoke/default
