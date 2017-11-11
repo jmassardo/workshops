@@ -1,0 +1,32 @@
+---
+driver:
+  name: azurerm
+
+driver_config:
+  subscription_id: '2910ad59-441f-4a02-986a-4f13222e58f7'
+  location: 'South Central US'
+  machine_size: 'Standard_DS2_v2'
+
+provisioner:
+  name: chef_zero
+  # You may wish to disable always updating cookbooks in CI or other testing environments.
+  # For example:
+  #   always_update_cookbooks: <%= !ENV['CI'] %>
+  always_update_cookbooks: true
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: ubuntu-16.04
+    driver_config:
+      image_urn: Canonical:UbuntuServer:16.04-LTS:latest
+
+suites:
+  - name: middleman
+    run_list:
+      - recipe[middleman::default]
+    verifier:
+      inspec_tests:
+        - test/smoke/default
+    attributes:
