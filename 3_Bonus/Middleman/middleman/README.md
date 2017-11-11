@@ -18,9 +18,19 @@ This cookbook makes use of the following Chef Resources:
 
 ## Testing
 
-This cookbook was tested using [Test Kitchen](http://kitchen.ci/), [VirtualBox](https://www.virtualbox.org/), and [Vagrant](https://www.vagrantup.com/).
+This cookbook was tested using [Test Kitchen](http://kitchen.ci/), [Kitchen-AzureRM](https://github.com/test-kitchen/kitchen-azurerm), and [Microsoft Azure](https://portal.azure.com).
 
 You can find more information on this testing method by reviewing Kitchen's [Getting Started Guide](http://kitchen.ci/docs/getting-started) or by completing Chef's [Local Development and Testing](https://learn.chef.io/tracks/local-development-and-testing#/) module.
+
+The [Kitchen-AzureRM GitHub Page](https://github.com/test-kitchen/kitchen-azurerm) has detailed instructions on configuring Test Kitchen to use the Azure provider.
+
+The simple steps are:
+
+* Create a Service Principal
+* Add the Service Principal, SubscriptionID, etc. to the `~/.azure/credentials` file.
+  >Note: the .azure folder needs to be in your home directory
+* Change the driver, driver config.
+* Add the driver config and image_urn to the Platforms section
 
 ## Usage
 
@@ -34,7 +44,7 @@ Steps to test this cookbook:
     ```
 * Change directories to the cookbook directory:
     ``` bash
-    cd /workshops/3_Bonus/Middleman/middleman
+    cd workshops/3_Bonus/Middleman/middleman
     ```
 * Run with Test Kitchen
     ``` bash
