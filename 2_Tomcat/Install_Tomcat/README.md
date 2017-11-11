@@ -15,7 +15,7 @@ This cookbook makes use of the following Chef Resources:
 * [Remote_file](https://docs.chef.io/resource_remote_file.html)
 * [Execute](https://docs.chef.io/resource_execute.html)
 
->Since this cookbook uses the [Execute](https://docs.chef.io/resource_execute.html) resource, it also has [gaurds](https://docs.chef.io/resource_common.html#guards) or conditional statements to prevent the resource from continually executing and possibly breaking the system. This improves the [idempontency](https://en.wikipedia.org/wiki/Idempotence) of the cookbook
+>Since this cookbook uses the [Execute](https://docs.chef.io/resource_execute.html) resource, it also has [guards](https://docs.chef.io/resource_common.html#guards) or conditional statements to prevent the resource from continually executing and possibly breaking the system. This improves the [idempontency](https://en.wikipedia.org/wiki/Idempotence) of the cookbook
 
 ## Testing
 
