@@ -17,7 +17,6 @@ Gemfile.lock.old
 # test kitchen
 .kitchen/
 .kitchen.local.yml
-.kitchen.yml
 
 # Chef
 Berksfile.lock
