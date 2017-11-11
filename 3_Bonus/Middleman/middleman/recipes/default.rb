@@ -5,12 +5,14 @@
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
 # update packages
-# execute 'apt-get update' do
-#   command 'sudo apt-get update'
-#   action :run
-# end
+execute 'apt-get update' do
+  command 'sudo apt-get update'
+  action :run
+end
 
 # Install packages
+# This uses a whitespace array
+# More info here: https://docs.chef.io/resource_examples.html#package
 %w(
     build-essential
     libssl-dev
@@ -36,7 +38,7 @@
 end
 
 # Install Ruby
-ruby 'Install Ruby' do
+script 'Install Ruby' do
   interpreter 'bash'
   code <<-EOH
     mkdir ~/ruby
@@ -54,7 +56,7 @@ ruby 'Install Ruby' do
 end
 
 # Run commands to config apache
-ruby 'config apache' do
+script 'config apache' do
   interpreter 'bash'
   code <<-EOH
     a2enmod proxy_http
@@ -90,7 +92,7 @@ execute 'Restart Apache' do
 end
 
 # Clone the app and install the bits for it
-ruby 'App install script' do
+script 'App install script' do
   interpreter 'bash'
   code <<-EOH
   cd /var/www
