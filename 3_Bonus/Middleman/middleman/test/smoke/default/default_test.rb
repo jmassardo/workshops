@@ -5,14 +5,63 @@
 # The Inspec reference, with examples and extensive documentation, can be
 # found at http://inspec.io/docs/reference/resources/
 
-unless os.windows?
-  # This is an example test, replace with your own test.
-  describe user('root'), :skip do
-    it { should exist }
+%w(
+  build-essential
+  libssl-dev
+  libyaml-dev
+  libreadline-dev
+  openssl
+  curl
+  git-core
+  zlib1g-dev
+  bison
+  libxml2-dev
+  libxslt1-dev
+  libcurl4-openssl-dev
+  nodejs
+  libsqlite3-dev
+  sqlite3
+  apache2
+  git
+).each do |pkg|
+  describe package('#{utility}') do
+    it { should be_installed }
   end
 end
 
-# This is an example test, replace it with your own test.
-describe port(80), :skip do
-  it { should_not be_listening }
+# Is ruby installed?
+describe file('/usr/local/bin/ruby') do
+  it { should exist }
+end
+
+# does the blog config file exisst?
+describe file('/etc/apache2/sites-enabled/blog.conf') do
+  it { should exist}
+end
+
+# Is apache running?
+describe service('apache2') do
+  it { should be_installed }
+  it { should be_enabled }
+  it { should be_running }
+end
+
+# Is bundler installed
+describe command('gem list --local | grep -m 1 bundler') do
+  its ('stdout') { should match /bundler/ }
+end
+
+# Does the blog conf file exist?
+describe file('/etc/thin/blog.conf') do
+  it { should exist}
+end
+
+# does the thin init script exist?
+describe file('/etc/init.d/thin') do
+  it { should exist }
+end
+
+# Is apache listening
+describe port(80) do
+  it { should be_listening }
 end
