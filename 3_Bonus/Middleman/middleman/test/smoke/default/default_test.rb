@@ -24,7 +24,7 @@
   apache2
   git
 ).each do |pkg|
-  describe package('#{utility}') do
+  describe package("#{pkg}") do
     it { should be_installed }
   end
 end
