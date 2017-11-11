@@ -9,7 +9,6 @@ if platform?("ubuntu")
   execute 'apt-get update' do
     command 'sudo apt-get update'
     action :run
-    # Add guard to prevent continual execution
   end
 end
 

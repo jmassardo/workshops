@@ -19,5 +19,5 @@ end
 
 # Test to see if we can successfully run the mongo executable from the command line
 describe command('mongo --eval "quit()"') do
-  its('stdout') { should match /MongoDB/ }
+  its ('stdout') { should match /MongoDB/ }
 end
