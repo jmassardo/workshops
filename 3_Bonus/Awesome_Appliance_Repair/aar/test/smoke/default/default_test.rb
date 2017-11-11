@@ -28,7 +28,7 @@ end
 # Did the install get unpacked to the proper path?
 describe directory('/var/www/AAR') do
   it { should exist }
-  its('owner') { should eq 'www-data' }
+  its ('owner') { should eq 'www-data' }
 end
 
 # Does the apache conf file exist?
@@ -38,7 +38,7 @@ end
 
 # Does the AAR_config file exist?
 describe file('/var/www/AAR/AAR_config.py') do
-  it { should exist}
+  it { should exist }
 end
 
 # Is mysql running?
