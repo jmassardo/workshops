@@ -88,3 +88,52 @@ execute 'Restart Apache' do
   command 'service apache2 restart'
   action :nothing
 end
+
+# Clone the app and install the bits for it
+ruby 'App install script' do
+  interpreter 'bash'
+  code <<-EOH
+  cd /var/www
+  git clone https://github.com/learnchef/middleman-blog.git
+  cd middleman-blog
+  sudo gem install bundler
+  bundle install
+  sudo thin install
+  EOH
+  not_if { ::File.exist?('/etc/thin/blog.conf') }
+end
+
+# Create thin conf file
+file '/etc/thin/blog.conf' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
+# Populate conf file
+template '/etc/thin/blog.conf' do
+  source 'apache_conf.erb'
+  action :create
+end
+
+# Create thin init file
+file '/etc/init.d/thin' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
+# Populate thin init file
+template '/etc/init.d/thin' do
+  source 'apache_conf.erb'
+  action :create
+  notifies :run, 'execute[Restart Thin]', :immediately
+end
+
+# Thin restart. only used when the site file template converges
+execute 'Restart Thin' do
+  command 'service thin restart'
+  action :nothing
+end
