@@ -29,11 +29,13 @@ Steps to test this cookbook:
 
 * Clone this repo:
     ``` bash
-    git clone https://github.com/jmassardo/workshops.git
+    mkdir master
+    cd master
+    git clone -b master https://github.com/jmassardo/workshops.git
     ```
 * Change directories to the cookbook directory:
     ``` bash
-    cd ~/workshops/2_Tomcat/Install_Tomcat
+    cd workshops/2_Tomcat/Install_Tomcat
     ```
 * Run with Test Kitchen
     ``` bash
