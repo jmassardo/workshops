@@ -6,7 +6,7 @@ This page makes the following assumptions:
 
 * The tester is using a Mac or Linux system.
     >Note: If the tester is using a Windows system, there are a few changes. Please remember to reverse slashes (Mac/Linux uses forward slashes ( / ) while Windows uses backslashes ( \\ ). Also, the tester will need to ensure that [Git for Windows](https://git-scm.com/download/win) is installed.
-* This also assumes that the tester has an updated and fully functional install of [ChefDK](https://downloads.chef.io/chefdk), [Test Kitchen](http://kitchen.ci/), [VirtualBox](https://www.virtualbox.org/), and [Vagrant](https://www.vagrantup.com/).
+* This also assumes that the tester has an updated and fully functional install of [ChefDK](https://downloads.chef.io/chefdk), [Kitchen](http://kitchen.ci/), [VirtualBox](https://www.virtualbox.org/), and [Vagrant](https://www.vagrantup.com/).
 * To successfully test the Middleman branch, the tester will need access to Azure or will need to replace the `kitchen.yml` file. Additional information is included below.
 
 >You can find more information on this testing method by reviewing Kitchen's [Getting Started Guide](http://kitchen.ci/docs/getting-started) or by completing Chef's [Local Development and Testing](https://learn.chef.io/tracks/local-development-and-testing#/) module.
@@ -37,7 +37,7 @@ The [master branch](https://github.com/jmassardo/workshops) is a clone of the [C
         ``` text
         cd workshops/1_MongoDB/Install_MongoDB
         ```
-    * Run with Test Kitchen
+    * Run with Kitchen
         ``` text
         kitchen test
         ```
@@ -53,7 +53,7 @@ The [master branch](https://github.com/jmassardo/workshops) is a clone of the [C
         ``` text
         cd workshops/2_Tomcat/Install_Tomcat/
         ```
-    * Run with Test Kitchen
+    * Run with Kitchen
         ``` text
         kitchen test
         ```
@@ -73,7 +73,7 @@ The [community_cookbook](https://github.com/jmassardo/workshops/tree/community_c
         ``` text
         cd workshops/1_MongoDB/Install_MongoDB
         ```
-    * Run with Test Kitchen
+    * Run with Kitchen
         ``` text
         kitchen test
         ```
@@ -89,7 +89,7 @@ The [community_cookbook](https://github.com/jmassardo/workshops/tree/community_c
         ``` text
         cd workshops/2_Tomcat/Install_Tomcat/
         ```
-    * Run with Test Kitchen
+    * Run with Kitchen
         ``` text
         kitchen test
         ```
@@ -109,7 +109,7 @@ The [ubuntu_support](https://github.com/jmassardo/workshops/tree/ubuntu_support)
         ``` text
         cd workshops/1_MongoDB/Install_MongoDB
         ```
-    * Run with Test Kitchen
+    * Run with Kitchen
         ``` text
         kitchen test
         ```
@@ -125,7 +125,7 @@ The [ubuntu_support](https://github.com/jmassardo/workshops/tree/ubuntu_support)
         ``` text
         cd workshops/2_Tomcat/Install_Tomcat/
         ```
-    * Run with Test Kitchen
+    * Run with Kitchen
         ``` text
         kitchen test
         ```
@@ -146,12 +146,12 @@ This bonus workshop activity is to create a cookbook that installs the Awesome A
     ``` text
     cd workshops/3_Bonus/Awesome_Appliance_Repair/aar
     ```
-* Run with Test Kitchen
+* Run with Kitchen
     ``` text
     kitchen test
     ```
 * View the test results
-    * There are two Inspec tests to automatically. The results of these tests are part of the output of the `kitchen test` command.
+    * There are two Inspec tests that perform automated testing. The results of these tests are part of the output of the `kitchen test` command.
         * The first checks to see if the server is listening on port 80
         * The second test executes a command and parses the output.
 
@@ -195,7 +195,7 @@ This cookbook makes use of `each` loops since there are a number of packages tha
     # Use Vagrant
     mv .kitchen.yml .kitchen.vagrant.yml && mv .kitchen.azure.yml .kitchen.yml
     ```
-* Run with Test Kitchen
+* Run with Kitchen
     ``` text
     kitchen test
     ```
