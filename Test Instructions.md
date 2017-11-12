@@ -190,10 +190,10 @@ This cookbook makes use of `each` loops since there are a number of packages tha
 * Select preferred `kitchen.yml`. Azure is the default. Use the command below to swap over to Vagrant. The second command will swap back from Vagrant to Azure
     ``` bash
     # Use Vagrant
-    mv kitchen.yml kitchen.azure.yml  && mv kitchen.vagrant.yml kitchen.yml
+    mv .kitchen.yml .kitchen.azure.yml && mv .kitchen.vagrant.yml .kitchen.yml
 
     # Use Vagrant
-    mv kitchen.yml kitchen.vagrant.yml  && mv kitchen.azure.yml kitchen.yml
+    mv .kitchen.yml .kitchen.vagrant.yml && mv .kitchen.azure.yml .kitchen.yml
     ```
 * Run with Test Kitchen
     ``` text
