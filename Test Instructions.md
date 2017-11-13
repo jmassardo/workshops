@@ -224,16 +224,34 @@ These tests were added to both the MongoDB and the Tomcat cookbooks from the mas
     ```
 * Change directories to the desired cookbook directory:
     ``` bash
-    # Mongodb cookbook
-    $ cd workshops/1_MongoDB/Install_MongoDB
 
-    # Tomcat cookbook
-    $ cd workshops/2_Tomcat/Install_Tomcat
     ```
 * Run the smoke tests with Kitchen
     ``` bash
+    # Mongodb cookbook
+    $ cd workshops/1_MongoDB/Install_MongoDB
+
     # run full test cycle
     $ kitchen test
+
+    # OR
+
+    # Run tests separately
+
+    # Converge first to evaluate resources in recipe(s)
+    $ kitchen converge
+
+    # Execute smoke tests
+    $ kitchen verify
+    ```
+    ``` bash
+    # Tomcat cookbook
+    $ cd workshops/2_Tomcat/Install_Tomcat
+    
+    # run full test cycle
+    $ kitchen test
+
+    # OR
 
     # Run tests separately
 
@@ -245,5 +263,12 @@ These tests were added to both the MongoDB and the Tomcat cookbooks from the mas
     ```
 * Run the unit tests with Chefspec
     ``` bash
+    # Mongodb cookbook
+    $ cd workshops/1_MongoDB/Install_MongoDB
+    $ chef exec rspec --color spec/unit/recipes/default_spec.rb
+    ```
+    ``` bash
+    # Tomcat cookbook
+    $ cd workshops/2_Tomcat/Install_Tomcat
     $ chef exec rspec --color spec/unit/recipes/default_spec.rb
     ```
