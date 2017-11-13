@@ -222,10 +222,6 @@ These tests were added to both the MongoDB and the Tomcat cookbooks from the mas
     $ cd testing
     $ git clone -b testing https://github.com/jmassardo/workshops.git
     ```
-* Change directories to the desired cookbook directory:
-    ``` bash
-
-    ```
 * Run the smoke tests with Kitchen
     ``` bash
     # Mongodb cookbook
