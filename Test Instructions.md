@@ -28,34 +28,34 @@ The [master branch](https://github.com/jmassardo/workshops) is a clone of the [C
 
 1. The first objective is to create a cookbook that can install MongoDB.
     * Clone this repo:
-        ``` text
-        mkdir master
-        cd master
-        git clone -b master https://github.com/jmassardo/workshops.git
+        ``` bash
+        $ mkdir master
+        $ cd master
+        $ git clone -b master https://github.com/jmassardo/workshops.git
         ```
     * Change directories to the cookbook directory:
-        ``` text
-        cd workshops/1_MongoDB/Install_MongoDB
+        ``` bash
+        $ cd workshops/1_MongoDB/Install_MongoDB
         ```
     * Run with Kitchen
-        ``` text
-        kitchen test
+        ``` bash
+        $ kitchen test
         ```
 2. The second objective is to create a cookbook that can install Tomcat
     * Clone this repo:
-        ``` text
-        mkdir master
-        cd master
-        git clone -b master https://github.com/jmassardo/workshops.git
+        ``` bash
+        $ mkdir master
+        $ cd master
+        $ git clone -b master https://github.com/jmassardo/workshops.git
         ```
         >If the clone was completed in step 1, it isn't necessary to do it a second time for this branch.
     * Change directories to the cookbook directory:
-        ``` text
-        cd workshops/2_Tomcat/Install_Tomcat/
+        ``` bash
+        $ cd workshops/2_Tomcat/Install_Tomcat/
         ```
     * Run with Kitchen
-        ``` text
-        kitchen test
+        ``` bash
+        $ kitchen test
         ```
 
 ### Community Cookbooks
@@ -64,34 +64,34 @@ The [community_cookbook](https://github.com/jmassardo/workshops/tree/community_c
 
 1. The MongoDB cookbook was reconfigured to use the [sc-mongodb](https://supermarket.chef.io/cookbooks/sc-mongodb) cookbook from the Chef [Supermarket](https://supermarket.chef.io/).
     * Clone this repo:
-        ``` text
-        mkdir community_cookbook
-        cd community_cookbook
-        git clone -b community_cookbook https://github.com/jmassardo/workshops.git
+        ``` bash
+        $ mkdir community_cookbook
+        $ cd community_cookbook
+        $ git clone -b community_cookbook https://github.com/jmassardo/workshops.git
         ```
     * Change directories to the cookbook directory:
-        ``` text
-        cd workshops/1_MongoDB/Install_MongoDB
+        ``` bash
+        $ cd workshops/1_MongoDB/Install_MongoDB
         ```
     * Run with Kitchen
-        ``` text
-        kitchen test
+        ``` bash
+        $ kitchen test
         ```
 2. The Tomcat cookbook was reconfigured to use the [tomcat](https://supermarket.chef.io/cookbooks/tomcat) cookbook from the Chef [Supermarket](https://supermarket.chef.io/).
     * Clone this repo:
-        ``` text
-        mkdir community_cookbook
-        cd community_cookbook
-        git clone -b community_cookbook https://github.com/jmassardo/workshops.git
+        ``` bash
+        $ mkdir community_cookbook
+        $ cd community_cookbook
+        $ git clone -b community_cookbook https://github.com/jmassardo/workshops.git
         ```
         >If the clone was completed in step 1, it isn't necessary to do it a second time for this branch.
     * Change directories to the cookbook directory:
-        ``` text
-        cd workshops/2_Tomcat/Install_Tomcat/
+        ``` bash
+        $ cd workshops/2_Tomcat/Install_Tomcat/
         ```
     * Run with Kitchen
-        ``` text
-        kitchen test
+        ``` bash
+        $ kitchen test
         ```
 
 ### Ubuntu Support
@@ -100,34 +100,34 @@ The [ubuntu_support](https://github.com/jmassardo/workshops/tree/ubuntu_support)
 
 1. The MongoDB cookbook was reconfigured as a [wrapper cookbook](https://blog.chef.io/2017/02/14/writing-wrapper-cookbooks/). This cookbook uses a single condition in the default recipe to select an OS specific recipe to complete the configuration.
     * Clone this repo:
-        ``` text
-        mkdir ubuntu_support
-        cd ubuntu_support
-        git clone -b ubuntu_support https://github.com/jmassardo/workshops.git
+        ``` bash
+        $ mkdir ubuntu_support
+        $ cd ubuntu_support
+        $ git clone -b ubuntu_support https://github.com/jmassardo/workshops.git
         ```
     * Change directories to the cookbook directory:
-        ``` text
-        cd workshops/1_MongoDB/Install_MongoDB
+        ``` bash
+        $ cd workshops/1_MongoDB/Install_MongoDB
         ```
     * Run with Kitchen
-        ``` text
-        kitchen test
+        ``` bash
+        $ kitchen test
         ```
 2. The Tomcat cookbook was reconfigured to use multiple [logic conditions](https://docs.chef.io/ruby.html#if) in a single recipe.
     * Clone this repo:
-        ``` text
-        mkdir ubuntu_support
-        cd ubuntu_support
-        git clone -b ubuntu_support https://github.com/jmassardo/workshops.git
+        ``` bash
+        $ mkdir ubuntu_support
+        $ cd ubuntu_support
+        $ git clone -b ubuntu_support https://github.com/jmassardo/workshops.git
         ```
         >If the clone was completed in step 1, it isn't necessary to do it a second time for this branch.
     * Change directories to the cookbook directory:
-        ``` text
-        cd workshops/2_Tomcat/Install_Tomcat/
+        ``` bash
+        $ cd workshops/2_Tomcat/Install_Tomcat/
         ```
     * Run with Kitchen
-        ``` text
-        kitchen test
+        ``` bash
+        $ kitchen test
         ```
 
 ### AAR_v1
@@ -137,18 +137,18 @@ This bonus workshop activity is to create a cookbook that installs the Awesome A
 >Note: This cookbook is only for non-production or demonstration purposes. This cookbook will need additional features including additional [guards](https://docs.chef.io/resource_common.html#guards) along with secrets management - [Chef Vault](https://docs.chef.io/chef_vault.html) or [HashiCorp Vault](https://www.vaultproject.io/)
 
 * Clone this repo:
-    ``` text
-    mkdir aar_v1
-    cd aar_v1
-    git clone -b aar_v1 https://github.com/jmassardo/workshops.git
+    ``` bash
+    $ mkdir aar_v1
+    $ cd aar_v1
+    $ git clone -b aar_v1 https://github.com/jmassardo/workshops.git
     ```
 * Change directories to the cookbook directory:
-    ``` text
-    cd workshops/3_Bonus/Awesome_Appliance_Repair/aar
+    ``` bash
+    $ cd workshops/3_Bonus/Awesome_Appliance_Repair/aar
     ```
 * Run with Kitchen
-    ``` text
-    kitchen test
+    ``` bash
+    $ kitchen test
     ```
 * View the test results
     * There are two Inspec tests that perform automated testing. The results of these tests are part of the output of the `kitchen test` command.
@@ -178,30 +178,72 @@ Middleman is an additional bonus workshop exercise that installs a static site g
 This cookbook makes use of `each` loops since there are a number of packages that are required.
 
 * Clone this repo:
-    ``` text
-    mkdir middleman
-    cd middleman
-    git clone -b middleman https://github.com/jmassardo/workshops.git
+    ``` bash
+    $ mkdir middleman
+    $ cd middleman
+    $ git clone -b middleman https://github.com/jmassardo/workshops.git
     ```
 * Change directories to the cookbook directory:
-    ``` text
-    cd workshops/3_Bonus/Middleman/middleman
+    ``` bash
+    $ cd workshops/3_Bonus/Middleman/middleman
     ```
 * Select preferred `kitchen.yml`. Azure is the default. Use the command below to swap over to Vagrant. The second command will swap back from Vagrant to Azure
     ``` bash
     # Use Vagrant
-    mv .kitchen.yml .kitchen.azure.yml && mv .kitchen.vagrant.yml .kitchen.yml
+    $ mv .kitchen.yml .kitchen.azure.yml && mv .kitchen.vagrant.yml .kitchen.yml
 
     # Use Vagrant
-    mv .kitchen.yml .kitchen.vagrant.yml && mv .kitchen.azure.yml .kitchen.yml
+    $ mv .kitchen.yml .kitchen.vagrant.yml && mv .kitchen.azure.yml .kitchen.yml
     ```
 * Run with Kitchen
-    ``` text
-    kitchen test
+    ``` bash
+    $ kitchen test
     ```
 
 ### Testing
 
-```
-TODO
-```
+The last bonus workshop is Testing. Again, this is a branch of master. The purpose of this workshop is to add automated tests. Chef provides a detailed YouTube video on [Test Driven Development](https://www.youtube.com/watch?v=g_w2GZAe6f4) that provides lots of good information on testing. There are two types of tests in this exercise:
+
+* Smoke
+  * Smoke testing, also known as build verification testing, is the act of testing important functionality such as does the program run? or is the service installed?
+  * The smoke tests run at the end of the Chef converge to verify that the desired result was achieved.
+  * This cookbook uses [Inspec](https://www.inspec.io/) to perform these smoke tests.
+* Unit
+  * Unit are the smallest testable object. The objective in unit testing is to isolate a unit and validate its correctness.
+  * This cookbook uses [Chefspec](https://chefspec.github.io/chefspec/) to perform the unit tests.
+  * [Chefspec](https://chefspec.github.io/chefspec/) runs tests without the need for an actual system.
+
+
+These tests were added to both the MongoDB and the Tomcat cookbooks from the master branch.
+
+* Clone this repo:
+    ``` bash
+    $ mkdir testing
+    $ cd testing
+    $ git clone -b testing https://github.com/jmassardo/workshops.git
+    ```
+* Change directories to the desired cookbook directory:
+    ``` bash
+    # Mongodb cookbook
+    $ cd workshops/1_MongoDB/Install_MongoDB
+
+    # Tomcat cookbook
+    $ cd workshops/2_Tomcat/Install_Tomcat
+    ```
+* Run the smoke tests with Kitchen
+    ``` bash
+    # run full test cycle
+    $ kitchen test
+
+    # Run tests separately
+
+    # Converge first to evaluate resources in recipe(s)
+    $ kitchen converge
+
+    # Execute smoke tests
+    $ kitchen verify
+    ```
+* Run the unit tests with Chefspec
+    ``` bash
+    $ chef exec rspec --color spec/unit/recipes/default_spec.rb
+    ```
