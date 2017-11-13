@@ -44,11 +44,11 @@ describe 'Install_Tomcat::default' do
     end
 
     it 'enables the tomcat service' do
-      expect(chef_run).to enable_service 'tomcat'
+      expect(chef_run).to enable_service 'tomcat.service'
     end
   
     it 'starts the tomcat service' do
-      expect(chef_run).to start_service 'tomcat'
+      expect(chef_run).to start_service 'tomcat.service'
     end
   end
 end
